@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on September 26, 2025, at 13:17
+    on September 26, 2025, at 01:55
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -40,7 +40,7 @@ deviceManager = hardware.DeviceManager()
 _thisDir = os.path.dirname(os.path.abspath(__file__))
 # store info about the experiment session
 psychopyVersion = '2025.1.1'
-expName = 'fMRI_Blocked_Fingers'  # from the Builder filename that created this script
+expName = 'fMRI_Blocked_Effectors'  # from the Builder filename that created this script
 expVersion = ''
 # a list of functions to run when the experiment ends (starts off blank)
 runAtExit = []
@@ -64,7 +64,7 @@ or run the experiment with `--pilot` as an argument. To change what pilot
 PILOTING = core.setPilotModeFromArgs()
 # start off with values from experiment settings
 _fullScr = True
-_winSize = [2560, 1440]
+_winSize = [1512, 944]
 # if in pilot mode, apply overrides according to preferences
 if PILOTING:
     # force windowed mode
@@ -133,7 +133,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version=expVersion,
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\Users\\lydia\\Documents\\Code\\PsychoPy\\fMRI_Block_Tasks\\fMRI_Blocked_Finger_design_lastrun.py',
+        originPath='C:\\Users\\lydia\\Documents\\Code\\PsychoPy\\fMRI_Block_Tasks\\fMRI_Blocked_General_Effector_design_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -396,21 +396,20 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial" ---
-    image = visual.ImageStim(
-        win=win,
-        name='image', 
-        image='default.png', mask=None, anchor='center',
-        ori=0.0, pos=(0, 0), draggable=False, size=(1, 1),
-        color=[1,1,1], colorSpace='rgb', opacity=None,
-        flipHoriz=False, flipVert=False,
-        texRes=128.0, interpolate=True, depth=0.0)
     trialFixation = visual.ShapeStim(
         win=win, name='trialFixation',
         size=(0.01, 0.01), vertices='circle',
         ori=0.0, pos=(0, 0), draggable=False, anchor='center',
         lineWidth=1.0,
         colorSpace='rgb', lineColor=[0.0000, 0.0000, 0.0000], fillColor=[-1.0000, 1.0000, -0.0039],
-        opacity=None, depth=-1.0, interpolate=True)
+        opacity=None, depth=0.0, interpolate=True)
+    text_3 = visual.TextStim(win=win, name='text_3',
+        text='',
+        font='Arial',
+        pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
+        color='white', colorSpace='rgb', opacity=None, 
+        languageStyle='LTR',
+        depth=-1.0);
     
     # --- Initialize components for Routine "completedMsg" ---
     text = visual.TextStim(win=win, name='text',
@@ -716,7 +715,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         method='fullRandom', 
         extraInfo=expInfo, 
         originPath=-1, 
-        trialList=data.importConditions('fingersBlock.xlsx'), 
+        trialList=data.importConditions('effectorsBlock.xlsx'), 
         seed=None, 
     )
     thisExp.addLoop(trials)  # add the loop to the experiment
@@ -747,12 +746,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # create an object to store info about Routine trial
         trial = data.Routine(
             name='trial',
-            components=[image, trialFixation],
+            components=[trialFixation, text_3],
         )
         trial.status = NOT_STARTED
         continueRoutine = True
         # update component parameters for each repeat
-        image.setImage(condsFile)
+        text_3.setText(condsFile)
         # store start times for trial
         trial.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         trial.tStart = globalClock.getTime(format='float')
@@ -785,40 +784,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             tThisFlipGlobal = win.getFutureFlipTime(clock=None)
             frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
             # update/draw components on each frame
-            
-            # *image* updates
-            
-            # if image is starting this frame...
-            if image.status == NOT_STARTED and tThisFlip >= 0-frameTolerance:
-                # keep track of start time/frame for later
-                image.frameNStart = frameN  # exact frame index
-                image.tStart = t  # local t and not account for scr refresh
-                image.tStartRefresh = tThisFlipGlobal  # on global time
-                win.timeOnFlip(image, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'image.started')
-                # update status
-                image.status = STARTED
-                image.setAutoDraw(True)
-            
-            # if image is active this frame...
-            if image.status == STARTED:
-                # update params
-                pass
-            
-            # if image is stopping this frame...
-            if image.status == STARTED:
-                # is it time to stop? (based on global clock, using actual start)
-                if tThisFlipGlobal > image.tStartRefresh + 8-frameTolerance:
-                    # keep track of stop time/frame for later
-                    image.tStop = t  # not accounting for scr refresh
-                    image.tStopRefresh = tThisFlipGlobal  # on global time
-                    image.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'image.stopped')
-                    # update status
-                    image.status = FINISHED
-                    image.setAutoDraw(False)
             
             # *trialFixation* updates
             
@@ -853,6 +818,40 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     # update status
                     trialFixation.status = FINISHED
                     trialFixation.setAutoDraw(False)
+            
+            # *text_3* updates
+            
+            # if text_3 is starting this frame...
+            if text_3.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+                # keep track of start time/frame for later
+                text_3.frameNStart = frameN  # exact frame index
+                text_3.tStart = t  # local t and not account for scr refresh
+                text_3.tStartRefresh = tThisFlipGlobal  # on global time
+                win.timeOnFlip(text_3, 'tStartRefresh')  # time at next scr refresh
+                # add timestamp to datafile
+                thisExp.timestampOnFlip(win, 'text_3.started')
+                # update status
+                text_3.status = STARTED
+                text_3.setAutoDraw(True)
+            
+            # if text_3 is active this frame...
+            if text_3.status == STARTED:
+                # update params
+                pass
+            
+            # if text_3 is stopping this frame...
+            if text_3.status == STARTED:
+                # is it time to stop? (based on global clock, using actual start)
+                if tThisFlipGlobal > text_3.tStartRefresh + 8.0-frameTolerance:
+                    # keep track of stop time/frame for later
+                    text_3.tStop = t  # not accounting for scr refresh
+                    text_3.tStopRefresh = tThisFlipGlobal  # on global time
+                    text_3.frameNStop = frameN  # exact frame index
+                    # add timestamp to datafile
+                    thisExp.timestampOnFlip(win, 'text_3.stopped')
+                    # update status
+                    text_3.status = FINISHED
+                    text_3.setAutoDraw(False)
             
             # check for quit (typically the Esc key)
             if defaultKeyboard.getKeys(keyList=["escape"]):
