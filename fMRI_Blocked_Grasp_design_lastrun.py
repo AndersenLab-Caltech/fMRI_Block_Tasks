@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on September 11, 2025, at 16:08
+    on September 26, 2025, at 13:50
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -133,7 +133,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version=expVersion,
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\Users\\lydia\\Documents\\Code\\PsychoPy\\fMRI block tasks\\fMRI_Blocked_Grasp_design_lastrun.py',
+        originPath='C:\\Users\\AndersenLab\\Desktop\\fMRI_Block_Tasks\\fMRI_Blocked_Grasp_design_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -200,9 +200,9 @@ def setupWindow(expInfo=None, win=None):
     if win is None:
         # if not given a window to setup, make one
         win = visual.Window(
-            size=_winSize, fullscr=_fullScr, screen=0,
+            size=_winSize, fullscr=_fullScr, screen=1,
             winType='pyglet', allowGUI=False, allowStencil=False,
-            monitor='testMonitor', color=[-1.0000, -1.0000, -1.0000], colorSpace='rgb',
+            monitor='UHD4K', color=[-1.0000, -1.0000, -1.0000], colorSpace='rgb',
             backgroundImage='', backgroundFit='none',
             blendMode='avg', useFBO=True,
             units='height',
@@ -378,7 +378,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "startMsg" ---
     text_2 = visual.TextStim(win=win, name='text_2',
-        text='Waiting for Scanner...\n\nPlease press spacebar when ready to begin',
+        text='Waiting for Scanner...',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
@@ -466,7 +466,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     startMsg.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
     startMsg.tStart = globalClock.getTime(format='float')
     startMsg.status = STARTED
-    thisExp.addData('startMsg.started', startMsg.tStart)
     startMsg.maxDuration = None
     # keep track of which components have finished
     startMsgComponents = startMsg.components
@@ -531,7 +530,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             win.callOnFlip(key_resp.clock.reset)  # t=0 on next screen flip
             win.callOnFlip(key_resp.clearEvents, eventType='keyboard')  # clear events on next screen flip
         if key_resp.status == STARTED and not waitOnFlip:
-            theseKeys = key_resp.getKeys(keyList=['space'], ignoreKeys=["escape"], waitRelease=False)
+            theseKeys = key_resp.getKeys(keyList=['5'], ignoreKeys=["escape"], waitRelease=False)
             _key_resp_allKeys.extend(theseKeys)
             if len(_key_resp_allKeys):
                 key_resp.keys = _key_resp_allKeys[-1].name  # just the last key pressed
@@ -578,7 +577,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # store stop times for startMsg
     startMsg.tStop = globalClock.getTime(format='float')
     startMsg.tStopRefresh = tThisFlipGlobal
-    thisExp.addData('startMsg.stopped', startMsg.tStop)
     # check responses
     if key_resp.keys in ['', [], None]:  # No response was made
         key_resp.keys = None
