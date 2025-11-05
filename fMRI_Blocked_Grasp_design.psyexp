@@ -314,7 +314,6 @@
   </Routines>
   <Flow>
     <Routine name="startMsg"/>
-    <Routine name="scannerDelay"/>
     <LoopInitiator loopType="TrialHandler" name="trials">
       <Param name="Selected rows" updates="None" val="" valType="str"/>
       <Param name="conditions" updates="None" val="[{'condsFile': 'stims/hand_images/Lateral.jpg'}, {'condsFile': 'stims/hand_images/MediumWrap.jpg'}, {'condsFile': 'stims/hand_images/PalmarPinch.jpg'}, {'condsFile': 'stims/hand_images/Shuffled.jpg'}, {'condsFile': 'stims/hand_images/Sphere3Finger.jpg'}, {'condsFile': 'stims/hand_images/WritingTripod.jpg'}]" valType="str"/>
