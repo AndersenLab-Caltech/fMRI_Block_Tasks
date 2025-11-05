@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on November 05, 2025, at 12:58
+    on November 05, 2025, at 13:05
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -378,7 +378,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "startMsg" ---
     text_2 = visual.TextStim(win=win, name='text_2',
-        text='Waiting for Scanner...',
+        text='Waiting for Scanner...\n\nPoint to the cued bar and hold until it disappears. Return to center once it disappears. Rest when the cue is in the center.',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 

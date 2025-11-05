@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on September 26, 2025, at 13:50
+    on November 05, 2025, at 13:08
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -133,7 +133,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version=expVersion,
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\Users\\AndersenLab\\Desktop\\fMRI_Block_Tasks\\fMRI_Blocked_Grasp_design_lastrun.py',
+        originPath='C:\\Users\\lydia\\Documents\\Code\\PsychoPy\\fMRI_Block_Tasks\\fMRI_Blocked_Grasp_design_lastrun.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -378,22 +378,13 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     # --- Initialize components for Routine "startMsg" ---
     text_2 = visual.TextStim(win=win, name='text_2',
-        text='Waiting for Scanner...',
+        text='Waiting for Scanner...\n\nPerform the grasp shown by the cue and hold until the cue changes. If there is a cue that cannot be performed, stay at rest until the next cue.',
         font='Arial',
         pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
         color='white', colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
     key_resp = keyboard.Keyboard(deviceName='key_resp')
-    
-    # --- Initialize components for Routine "scannerDelay" ---
-    fixation = visual.ShapeStim(
-        win=win, name='fixation',
-        size=(0.01, 0.01), vertices='circle',
-        ori=0.0, pos=(0, 0), draggable=False, anchor='center',
-        lineWidth=1.0,
-        colorSpace='rgb', lineColor=[0.0000, 0.0000, 0.0000], fillColor=[1.0000, 1.0000, 1.0000],
-        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial" ---
     image = visual.ImageStim(
@@ -587,127 +578,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     thisExp.nextEntry()
     # the Routine "startMsg" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
-    
-    # --- Prepare to start Routine "scannerDelay" ---
-    # create an object to store info about Routine scannerDelay
-    scannerDelay = data.Routine(
-        name='scannerDelay',
-        components=[fixation],
-    )
-    scannerDelay.status = NOT_STARTED
-    continueRoutine = True
-    # update component parameters for each repeat
-    # store start times for scannerDelay
-    scannerDelay.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
-    scannerDelay.tStart = globalClock.getTime(format='float')
-    scannerDelay.status = STARTED
-    thisExp.addData('scannerDelay.started', scannerDelay.tStart)
-    scannerDelay.maxDuration = None
-    # keep track of which components have finished
-    scannerDelayComponents = scannerDelay.components
-    for thisComponent in scannerDelay.components:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "scannerDelay" ---
-    scannerDelay.forceEnded = routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 7.5:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *fixation* updates
-        
-        # if fixation is starting this frame...
-        if fixation.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            fixation.frameNStart = frameN  # exact frame index
-            fixation.tStart = t  # local t and not account for scr refresh
-            fixation.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(fixation, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'fixation.started')
-            # update status
-            fixation.status = STARTED
-            fixation.setAutoDraw(True)
-        
-        # if fixation is active this frame...
-        if fixation.status == STARTED:
-            # update params
-            pass
-        
-        # if fixation is stopping this frame...
-        if fixation.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > fixation.tStartRefresh + 7.5-frameTolerance:
-                # keep track of stop time/frame for later
-                fixation.tStop = t  # not accounting for scr refresh
-                fixation.tStopRefresh = tThisFlipGlobal  # on global time
-                fixation.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'fixation.stopped')
-                # update status
-                fixation.status = FINISHED
-                fixation.setAutoDraw(False)
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, win=win)
-            return
-        # pause experiment here if requested
-        if thisExp.status == PAUSED:
-            pauseExperiment(
-                thisExp=thisExp, 
-                win=win, 
-                timers=[routineTimer, globalClock], 
-                currentRoutine=scannerDelay,
-            )
-            # skip the frame we paused on
-            continue
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            scannerDelay.forceEnded = routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in scannerDelay.components:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "scannerDelay" ---
-    for thisComponent in scannerDelay.components:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    # store stop times for scannerDelay
-    scannerDelay.tStop = globalClock.getTime(format='float')
-    scannerDelay.tStopRefresh = tThisFlipGlobal
-    thisExp.addData('scannerDelay.stopped', scannerDelay.tStop)
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if scannerDelay.maxDurationReached:
-        routineTimer.addTime(-scannerDelay.maxDuration)
-    elif scannerDelay.forceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-7.500000)
-    thisExp.nextEntry()
     
     # set up handler to look after randomisation of conditions etc
     trials = data.TrialHandler2(
